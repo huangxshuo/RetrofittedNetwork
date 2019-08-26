@@ -2,10 +2,8 @@ package com.hxs.retrofittednetwork.manager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.hxs.retrofittednetwork.App;
 import com.hxs.retrofittednetwork.api.ApiService;
 import com.hxs.retrofittednetwork.auth.TokenAuthenticator;
-import com.hxs.retrofittednetwork.utils.SpUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +33,12 @@ public class NetworkManager {
 		return sInstance;
 	}
 
+
 	private NetworkManager() {
+
+	}
+
+	public void init(String host) {
 		HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
 		loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 		OkHttpClient client = new OkHttpClient.Builder()
@@ -51,7 +54,7 @@ public class NetworkManager {
 
 		retrofit = new Retrofit.Builder()
 				.client(client)
-				.baseUrl(SpUtils.getString(App.getContext(), "host", ""))
+				.baseUrl(host)
 				.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 				.addConverterFactory(GsonConverterFactory.create(buildGson()))
 				.build();

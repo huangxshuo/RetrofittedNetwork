@@ -91,7 +91,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResponse<T>> {
 			//处理服务器返回的错误信息,如token过期
 			errMsg = ae.getDisplayMsg();
 		}
-		onFail(errMsg);
+		onFailure(errMsg);
 		e.printStackTrace();
 
 	}
@@ -119,7 +119,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResponse<T>> {
 	/**
 	 * 返回失败
 	 */
-	protected abstract void onFail(String errMsg);
+	protected abstract void onFailure(String errMsg);
 
 
 }

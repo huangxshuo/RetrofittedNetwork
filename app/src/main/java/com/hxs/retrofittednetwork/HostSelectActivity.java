@@ -12,7 +12,7 @@ import com.google.gson.reflect.TypeToken;
 import com.hxs.retrofittednetwork.Bean.HostBean;
 import com.hxs.retrofittednetwork.adapter.HostListAdapter;
 import com.hxs.retrofittednetwork.api.Host;
-import com.hxs.retrofittednetwork.utils.SpUtils;
+import com.hxs.retrofittednetwork.manager.NetworkManager;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class HostSelectActivity extends AppCompatActivity {
 		adapter.setOnItemClickListener(new HostListAdapter.OnItemClickListener() {
 			@Override
 			public void onItemClick(HostBean bean) {
-				SpUtils.putString(HostSelectActivity.this, "host", bean.getServiceAddress());
+				NetworkManager.getInstance().init(bean.getServiceAddress());
 				startActivity(new Intent(HostSelectActivity.this, MainActivity.class));
 			}
 		});

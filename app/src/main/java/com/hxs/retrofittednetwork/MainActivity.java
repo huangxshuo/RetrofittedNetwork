@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 					}
 
 					@Override
-					protected void onFail(String errMsg) {
+					protected void onFailure(String errMsg) {
 						Toast.makeText(MainActivity.this, errMsg, Toast.LENGTH_SHORT).show();
 					}
 				});
